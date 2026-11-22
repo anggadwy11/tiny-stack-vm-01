@@ -58,8 +58,7 @@ function run(p: Uint8Array, inp: Uint8Array): { out: Uint8Array; code: number } 
     const meta = META[op];
     if (meta === undefined) return done(5);
     const [imm, pops, pushes] = meta;
-    if (pc + imm >= n && imm > 0) return done(9);
-    if (imm === 0 && pc >= n) return done(9);
+    if (pc + imm >= n) return done(9);
     steps++;
     const next = pc + 1 + imm;
     if (sp < pops) return done(2);
